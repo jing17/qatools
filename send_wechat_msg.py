@@ -2,7 +2,6 @@ import requests
 import base64
 import os,sys
 
-
 def send_wechat_msg(content):
     '''发送企业微信消息'''
     # 登录获取token
@@ -60,6 +59,6 @@ if __name__ == '__main__':
     jobName = os.getenv("jobName", "raptoapi")
     buildNum = os.getenv("buildNum", 5)
     projectID = os.getenv("projectID", "160")
-    BUILD_USER = sys.argv[1]
+    BUILD_USER = os.getenv("BUILD_USER","wujj")
     content = "构建者：" + str(BUILD_USER) + "\n" + "构建参数：{ProjectID:" + projectID + "}\n\n" + getBuildResult(buildNum, jobName)
     send_wechat_msg(content)
