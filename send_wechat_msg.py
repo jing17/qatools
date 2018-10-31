@@ -47,6 +47,7 @@ def getBuildResult(buildID, jobName):
     }
     result = requests.get(url=url, headers=headers)
     # print(result.text)
+    print("#########url: ",url)
     result_json = result.json()
     fullDisplayName = result_json["fullDisplayName"]
     res = result_json["result"]
