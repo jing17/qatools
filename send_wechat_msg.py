@@ -34,14 +34,16 @@ def send_wechat_msg(content):
 def getBuildResult(buildID, jobName):
     '''获取构建结果'''
     # 获取authorization
-    userId = "admin"
-    token = "b0b98629bf7e43df99cb39e5ec35936d"
+    # userId = "admin"
+    # token = "b0b98629bf7e43df99cb39e5ec35936d"
+    userId = "wjj"
+    token = "qa123456"
     s = "{0}:{1}".format(userId, token)
     authorization = base64.b64encode(s.encode(encoding="utf-8"))
 
     # 调用Jenkins查看构建结果的api
     # url = "http://localhost:8080/job/{0}/{1}/api/json".format(jobName, buildID)
-    url = "http://114.115.182.227:8080/jenkins/job/{0}/{1}/api/json".format(jobName, buildID)
+    url = "http://114.115.182.227:8080/jenkins/job/{0}/{1}/api/json?pretty=true".format(jobName, buildID)
     headers = {
         "Content-Type": "application/json;charset=utf-8",
         "Authorization": "Basic " + authorization.decode()
