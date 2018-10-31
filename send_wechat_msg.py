@@ -54,7 +54,7 @@ def getBuildResult(buildID, jobName):
     result_json = result.json()
     fullDisplayName = result_json["fullDisplayName"]
     res = result_json["result"]
-    content = "构建项目：{0}\n构建结果：{1}\n若失败请及时<a href=\"http://localhost:8080/job/{2}/{3}/console\">查看日志</a>！".format(
+    content = "构建项目：{0}\n构建结果：{1}\n若失败请及时<a href=\"http://114.115.182.227:8080/jenkins/job/{2}/{3}/console\">查看日志</a>！".format(
         fullDisplayName, res, jobName, buildID)
     return content
 
