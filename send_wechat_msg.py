@@ -40,7 +40,8 @@ def getBuildResult(buildID, jobName):
     authorization = base64.b64encode(s.encode(encoding="utf-8"))
 
     # 调用Jenkins查看构建结果的api
-    url = "http://localhost:8080/job/{0}/{1}/api/json".format(jobName, buildID)
+    # url = "http://localhost:8080/job/{0}/{1}/api/json".format(jobName, buildID)
+    url = "http://114.115.182.227:8080/jenkins/job/{0}/{1}/api/json".format(jobName, buildID)
     headers = {
         "Content-Type": "application/json;charset=utf-8",
         "Authorization": "Basic " + authorization.decode()
@@ -57,9 +58,9 @@ def getBuildResult(buildID, jobName):
 
 
 if __name__ == '__main__':
-    jobName = os.getenv("jobName", "raptoapi")
-    buildNum = os.getenv("buildNum", 5)
+    jobName = os.getenv("jobName", "test")
+    buildNum = os.getenv("buildNum", 2)
     projectID = os.getenv("projectID", "160")
-    BUILD_USER = os.getenv("BUILD_USER","wujj")
+    BUILD_USER = os.getenv("BUILD_USER","wjj")
     content = "构建者：" + str(BUILD_USER) + "\n" + "构建参数：{ProjectID:" + projectID + "}\n\n" + getBuildResult(buildNum, jobName)
     send_wechat_msg(content)
