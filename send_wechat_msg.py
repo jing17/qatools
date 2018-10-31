@@ -63,6 +63,6 @@ if __name__ == '__main__':
     jobName = os.getenv("jobName", "test")
     buildNum = os.getenv("buildNum", 2)
     projectID = os.getenv("projectID", "160")
-    BUILD_USER = os.getenv("BUILD_USER","wjj")
+    BUILD_USER = os.getenv("BUILD_USER","default")
     content = "构建者：" + str(BUILD_USER) + "\n" + "构建参数：{ProjectID:" + projectID + "}\n\n" + getBuildResult(buildNum, jobName)
     send_wechat_msg(content)
