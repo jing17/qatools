@@ -67,5 +67,6 @@ def getValue(varName, dataType=DataType.NUM, path=DATA_PATH):
         else:
             raise NameError("The '{}'dataType is not existed".format(dataType))
 
+
 if __name__ == '__main__':
     setValue("test")
