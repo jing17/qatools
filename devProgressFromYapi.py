@@ -1,6 +1,9 @@
 import requests
 import xlwt
 
+# 通过tag配置导出对应版本的接口，None为全部
+version = None
+
 session = requests.session()
 body = {
     "email": "wujingj@zjbdos.com",
@@ -23,11 +26,22 @@ apis = []
 for cat in catList:
     if cat["list"] != []:
         for api in cat["list"]:
-            apis.append({
-                "catName": cat["name"],
-                "apiName": api["title"],
-                "apiUrl": api["path"]
-            })
+            if version in api["tag"]:
+                apis.append({
+                    "catName": cat["name"],
+                    "apiName": api["title"],
+                    "apiUrl": api["path"]
+                })
+            elif version == None:
+                apis.append({
+                    "catName": cat["name"],
+                    "apiName": api["title"],
+                    "apiUrl": api["path"]
+                })
+            else:
+                continue
+
+
 print("***********************************")
 print(apis)
 
