@@ -89,6 +89,6 @@ if bugCount != 0:
     }
 
     res = requests.post(WEBHOOK_TOKEN, json=textMsg)
-    print("钉钉发送成功！\n" + res.json())
+    print("钉钉发送成功！\n" + str(res.json()))
 else:
     print("今日无bug！开森")
